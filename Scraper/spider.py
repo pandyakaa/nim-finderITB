@@ -1,4 +1,4 @@
-# Scraper by I Putu Gede Wirasuta ( https://github.com/wirasuta)
+# Scraper by I Putu Gede Wirasuta (https://github.com/wirasuta)
 
 import requests
 from itertools import product
@@ -13,7 +13,7 @@ res = []
 def scrap_by_nim(nim):
     global notfound_count
     url = 'https://nic.itb.ac.id/manajemen-akun/pengecekan-user'
-    cookie = {'': '' } #insert session cookie here
+    cookie = {'':'' } #insert session cookie here
     body = {'uid': nim}
     r = requests.post(url, data=body, cookies=cookie)
     if 'tidak ditemukan' in r.text:
@@ -32,8 +32,8 @@ def scrap_by_nim(nim):
 def main():
     global notfound_count
     for kode in nimtpb:
-        base = f'{kode}1'
-        for i in range(5,9):
+        base = f'{kode}0'
+        for i in range(8,9):
             for j in range(10,100):
                 nim = f'{base}{i}0{j}'
                 scrap_by_nim(nim)
