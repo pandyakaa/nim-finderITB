@@ -25,29 +25,29 @@ app.post("/nim", (req, res) => {
         if (req.body.page === undefined || req.body.page === "0") {
           con.query("SELECT * FROM nimdb WHERE name like "+"\'%"+req.body.query+"%\' or nim_tpb like "+"\'%"+req.body.query+"%\' or nim_jur like "+"\'%"+req.body.query+"%\' order by nim_jur limit 10", function (err, result, fields) {
             if (err) throw err;
-            res.json(result);
+            res.json({"status":"200 OK","code":result.length,"query":req.body.query,"payload":result});
           });
         } else {
           con.query("SELECT * FROM nimdb WHERE name like "+"\'%"+req.body.query+"%\' or nim_tpb like "+"\'%"+req.body.query+"%\' or nim_jur like "+"\'%"+req.body.query+"%\' order by nim_jur limit 10 OFFSET "+(parseInt(req.body.page)*10), function (err, result, fields) {
             if (err) throw err;
-            res.json(result);
+            res.json({"status":"200 OK","code":result.length,"query":req.body.query,"payload":result});
           });
         }
       } else {
         if (req.body.page === undefined || req.body.page === "0") {
           con.query("SELECT * FROM nimdb WHERE name like "+"\'%"+req.body.query+"%\' or nim_tpb like "+"\'%"+req.body.query+"%\' or nim_jur like "+"\'%"+req.body.query+"%\' order by nim_jur limit "+req.body.count, function (err, result, fields) {
             if (err) throw err;
-            res.json(result);
+            res.json({"status":"200 OK","code":result.length,"query":req.body.query,"payload":result});
           });
         } else {
           con.query("SELECT * FROM nimdb WHERE name like "+"\'%"+req.body.query+"%\' or nim_tpb like "+"\'%"+req.body.query+"%\' or nim_jur like "+"\'%"+req.body.query+"%\' order by nim_jur limit "+req.body.count+" OFFSET "+(parseInt(req.body.page)*parseInt(req.body.count)), function (err, result, fields) {
             if (err) throw err;
-            res.json(result);
+            res.json({"status":"200 OK","code":result.length,"query":req.body.query,"payload":result});
           });
         }
       }
     } else {
-        res.json([]);
+        res.json({"status":"200 OK","code":-1});
     }
    });
 
