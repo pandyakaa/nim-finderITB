@@ -28,13 +28,14 @@ const tablestyle = {
 };
 
 const bodstyle = {
-  marginLeft: 20
+  marginLeft: 20,
+  marginRight: 20
 }
 
 const butstyle = {
   marginTop: 20,
   marginBottom: 10,
-  marginLeft: 110
+  marginLeft: 300
 }
 
 class App extends React.Component{
@@ -183,6 +184,7 @@ class App extends React.Component{
                                 <TableCell style={{fontSize: '13pt'}}>Nama</TableCell>
                                 <TableCell style={{fontSize: '13pt'}}>NIM TPB</TableCell>
                                 <TableCell style={{fontSize: '13pt'}}>NIM Jurusan</TableCell>
+                                <TableCell style={{fontSize: '13pt'}}>Jurusan</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -194,6 +196,7 @@ class App extends React.Component{
                                             <TableCell>{res.name}</TableCell>
                                             <TableCell>{res.nim_tpb}</TableCell>
                                             <TableCell>{res.nim_jur}</TableCell>
+                                            <TableCell>{res.jur}</TableCell>
                                         </TableRow>
                                     )
                                 })
