@@ -28,14 +28,13 @@ const tablestyle = {
 };
 
 const bodstyle = {
-  marginLeft: 20,
-  marginRight: 20
+  marginLeft: 20
 }
 
 const butstyle = {
   marginTop: 20,
-  marginBottom: 10,
-  marginLeft: 300
+  marginBottom: 20,
+  marginLeft: 110
 }
 
 class App extends React.Component{

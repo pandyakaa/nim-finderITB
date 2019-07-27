@@ -9,10 +9,10 @@ app.use(express.urlencoded({ extended: true }));
 var port = process.env.PORT || 8080;
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "12345",
-    database: "nimfinder"
+    host: "",
+    user: "",
+    password: "",
+    database: ""
   });
 
 con.connect(function(err) {
