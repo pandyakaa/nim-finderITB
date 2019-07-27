@@ -6,14 +6,14 @@ from time import sleep
 
 notfound_count = 0
 
-nimtpb = ['160','161','162','163','164','165','166','167','168','169','197','198','199']
+nimtpb = ['166']
 
 res = []
 
 def scrap_by_nim(nim):
     global notfound_count
     url = 'https://nic.itb.ac.id/manajemen-akun/pengecekan-user'
-    cookie = {'':'' } #insert session cookie here
+    cookie = {'SSESS3a3aca27d869446c6564e6eba553c0d3':'pwjizCy6EdouzBoYjgqsG1fXZfSjT8aDOYNVYRM8QuU' } #insert session cookie here
     body = {'uid': nim}
     r = requests.post(url, data=body, cookies=cookie)
     if 'tidak ditemukan' in r.text:
@@ -32,10 +32,10 @@ def scrap_by_nim(nim):
 def main():
     global notfound_count
     for kode in nimtpb:
-        base = f'{kode}0'
-        for i in range(8,9):
-            for j in range(10,100):
-                nim = f'{base}{i}0{j}'
+        base = f'{kode}1'
+        for i in range(7,8):
+            for j in range(99,500):
+                nim = f'{base}{i}{j}'
                 scrap_by_nim(nim)
                 if notfound_count >= 10:
                     notfound_count = 0

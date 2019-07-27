@@ -99,7 +99,7 @@ class App extends React.Component{
        @param = event
        Melakukan pengiriman data ke API ketika ada event oleh nextButton
     */
-   handleNext = (event) => {
+  handleNext = (event) => {
     var url = "https://api.pandyaka.com/nim";
     if (this.state.query.length !== 0) {
         this.incrPage()
@@ -110,25 +110,25 @@ class App extends React.Component{
             response => this.handleNextResponse(response)
         )
     }
-}
+  }
 
   /* Fungsi handlePrev
     @param = event
     Melakukan pengiriman data ke API ketika ada event oleh prevButton
   */
   handlePrev = (event) => {
-      var url = "https://api.pandyaka.com/nim";
-      if (this.state.query.length !== 0) {
-        if(this.state.page > 0) {
-          this.decrPage()
-          axios.post(url,{
-            query: this.state.query,
-            page: this.state.page-1
-          }).then(
-              response => this.handleResponse(response)
-          )
-        }
+    var url = "https://api.pandyaka.com/nim";
+    if (this.state.query.length !== 0) {
+      if(this.state.page > 0) {
+        this.decrPage()
+        axios.post(url,{
+          query: this.state.query,
+          page: this.state.page-1
+        }).then(
+            response => this.handleResponse(response)
+        )
       }
+    }
   }
   
     /* Fungsi handleNextResponse
@@ -136,27 +136,25 @@ class App extends React.Component{
        Melakukan validasi pada response yang diterima dari API
        ketika ada event oleh NextButton
     */
-    handleNextResponse = (response) => {
-      if (response.data.payload.length !== 0) {
-          this.handleResponse(response)
-      } else {
-          this.decrPage()
-      }
+  handleNextResponse = (response) => {
+    if (response.data.payload.length !== 0) {
+        this.handleResponse(response)
+    } else {
+        this.decrPage()
     }
+  }
 
   handleChange = (event) => {
     var url = "https://api.pandyaka.com/nim";
-    if (event.target.value.length !== 0) {
-      this.neutPage();
-      this.setState({
-        query: event.target.value
-      });
-      axios.post(url,{
-        query: event.target.value
-      }).then(
-        response => this.handleResponse(response)
-      )
-    }
+    this.neutPage();
+    this.setState({
+      query: event.target.value
+    });
+    axios.post(url,{
+      query: event.target.value
+    }).then(
+      response => this.handleResponse(response)
+    )
   }
 
   handleResponse = (response) => { 
@@ -234,6 +232,12 @@ class App extends React.Component{
       }
   }
 
+  mainRender = () => {
+    if(this.state.query !== '') {
+      return this.renderUtil();
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -251,16 +255,16 @@ class App extends React.Component{
   
           <div className="Body">
             <Input
-             placeholder="Find Name/NIM"
-             onChange={this.handleChange}
-             style={inpstyle}>
+            placeholder="Find Name/NIM"
+            onChange={this.handleChange}
+            style={inpstyle}>
             </Input>
           </div>
   
           <div className="Footer">
   
           </div>
-            {this.renderUtil()}
+            {this.mainRender()}
       </div>
     );
   }

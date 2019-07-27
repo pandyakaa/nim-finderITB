@@ -106,10 +106,10 @@ def validateNIM(nim) :
         return "Kewirausahaan"
 
 mydb = mysql.connector.connect(
-    host="",
-    user="",
-    password="",
-    database=""
+    host="localhost",
+    user="root",
+    password="12345",
+    database="nimfinder"
 )
 
 mycursor = mydb.cursor()
